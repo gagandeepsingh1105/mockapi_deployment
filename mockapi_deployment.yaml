@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockqpi-deployment
+  labels:
+    app: mockapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mockapi
+  template:
+    metadata:
+      labels:
+        app: mockapi
+    spec:
+      containers:
+      - name: mockapi-cnt
+        image: northamerica-northeast1-docker.pkg.dev/phx-01h7jztawwz09ct30bgp1tfj9m/cloud-run-source-deploy/ci-cd-image@sha256:e76b89e84e09ac793ab8bc9ce0ec6ee874e23209e0a5f9e65b6cd472e7d76652
+        ports:
+        - containerPort: 8080
